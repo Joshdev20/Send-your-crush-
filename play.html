@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crush Picker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle, #fff0f5, #ffcde0);
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.4rem;
+      color: #ff4d6d;
+    }
+    .btns {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .yes-btn { background-color: #00c851; color: white; }
+    .no-btn { background-color: #ff4444; color: white; }
+    .no-btn.bouncing {
+      animation: bounce 0.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    #message { margin-top: 20px; font-size: 18px; min-height: 30px; }
+    #fireworks { font-size: 30px; margin-top: 15px; }
+  </style>
+</head>
+<body>  <h1 id="questionTitle">Will you be my crush? 💘</h1>
+  <div class="btns">
+    <button class="yes-btn" id="yesBtn">Yes</button>
+    <button class="no-btn" id="noBtn">No</button>
+  </div>  <div id="message"></div>
+  <div id="fireworks"></div>  <audio id="romanticMusic" preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3">
+  </audio>  <script>
+    const params = new URLSearchParams(window.location.search);
+    const crushName = decodeURIComponent(params.get('to') || 'your crush');
+    const question = decodeURIComponent(params.get('question') || `Will you be my crush?`);
+    const yesText = decodeURIComponent(params.get('yes') || 'Yes');
+    const noText = decodeURIComponent(params.get('no') || 'No');
+    const whatsapp = decodeURIComponent(params.get('whatsapp') || '');
+
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
+    const fireworks = document.getElementById('fireworks');
+    const music = document.getElementById('romanticMusic');
+
+    document.getElementById('questionTitle').textContent = `${crushName}, ${question}`;
+    yesBtn.textContent = yesText;
+    noBtn.textContent = noText;
+
+    const pickupLines = [
+      "Are you French? Because Eiffel for you. 😘",
+      "Do you have a map? I just got lost in your eyes. 🗺️",
+      "I must be a snowflake, because I've fallen for you. ❄️",
+      "You must be WiFi — I'm feeling the connection. 📶❤️",
+      "Are you a magician? Because whenever I look at you, everyone else disappears. ✨",
+      "Even if gravity didn’t exist, I’d still fall for you. 🌌",
+      "If beauty were time, you'd be an eternity. ⏳"
+    ];
+
+    let clickCount = 0;
+
+    function typeMessage(text) {
+      message.textContent = '';
+      let i = 0;
+      const typing = setInterval(() => {
+        message.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(typing);
+      }, 30);
+    }
+
+    noBtn.addEventListener('click', () => {
+      if (clickCount < pickupLines.length) {
+        typeMessage(pickupLines[clickCount]);
+        clickCount++;
+        if (clickCount >= 3) noBtn.classList.add('bouncing');
+        if (clickCount === pickupLines.length) {
+          setTimeout(() => {
+            noBtn.classList.add('hidden');
+            typeMessage("Looks like the only right answer is YES 😏");
+          }, 1000);
+        }
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      typeMessage("Yaaay!! You just made someone's day! 💖");
+      fireworks.textContent = "🎉💖✨💞🎊";
+      confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+      music.play();
+      if (whatsapp) {
+        setTimeout(() => {
+          window.open(`https://wa.me/${whatsapp}`, '_blank');
+        }, 1500);
+      }
+    });
+  </script></body>
+</html>
