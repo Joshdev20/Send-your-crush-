@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Your Crush Link - SendUrCrush</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle, #ffe0ec, #ffc6d0);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #e2334d;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fefefe;
+      border: 1px dashed #aaa;
+      border-radius: 10px;
+      word-break: break-word;
+      display: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    a { color: #ff4d6d; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Create Your Own Crush Link 💘</h1>
+
+  <form id="crushForm">
+    <label for="to">Crush Name</label>
+    <input type="text" id="to" placeholder="e.g. Amaka" required>
+
+    <label for="question">Your Question</label>
+    <input type="text" id="question" placeholder="e.g. Will you go out with me?" required>
+
+    <label for="yes">Yes Button Text</label>
+    <input type="text" id="yes" placeholder="e.g. Yes Babe" required>
+
+    <label for="no">No Button Text</label>
+    <input type="text" id="no" placeholder="e.g. Not Yet" required>
+
+    <label for="whatsapp">Your WhatsApp (e.g. 234810...)</label>
+    <input type="text" id="whatsapp" placeholder="e.g. 2348101234567" required>
+
+    <button type="submit">Generate Crush Link 🔗</button>
+  </form>
+
+  <div id="result"></div>
+
+  <footer>
+    Made with ❤️ by <a href="https://sendurcrush.netlify.app" target="_blank">SendUrCrush</a>
+  </footer>
+
+  <script>
+    const form = document.getElementById('crushForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const to = encodeURIComponent(document.getElementById('to').value.trim());
+      const question = encodeURIComponent(document.getElementById('question').value.trim());
+      const yes = encodeURIComponent(document.getElementById('yes').value.trim());
+      const no = encodeURIComponent(document.getElementById('no').value.trim());
+      const whatsapp = encodeURIComponent(document.getElementById('whatsapp').value.trim());
+
+      const link = `https://sendurcrush.netlify.app/play.html?to=${to}&question=${question}&yes=${yes}&no=${no}&whatsapp=${whatsapp}`;
+      result.innerHTML = `<strong>Share this link with your crush:</strong><br><a href="${link}" target="_blank">${link}</a>`;
+      result.style.display = 'block';
+    });
+  </script>
+</body>
