@@ -1,102 +1,43 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SendUrCrush</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SendUrCrush - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }body {
-  font-family: 'Quicksand', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: radial-gradient(circle, #fff0f5, #ffcde0);
-  padding: 20px;
-  text-align: center;
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #ffdde1, #ffc3a0);
+      color: #333;
+      text-align: center;
+      padding: 40px 20px;
+      transition: background 0.5s, color 0.5s;
+    }body.dark {
+  background: linear-gradient(to bottom right, #1f1f1f, #121212);
+  color: #f0f0f0;
 }
 
 h1 {
-  font-family: 'Pacifico', cursive;
   font-size: 2.8rem;
   color: #ff4d6d;
   margin-bottom: 20px;
 }
 
-.buttons, .theme-toggle {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin: 15px 0;
+body.dark h1 {
+  color: #ff89a4;
 }
 
-button {
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.yes-btn {
-  background: linear-gradient(to right, #00c851, #33b864);
-  color: white;
-}
-
-.no-btn {
-  background: linear-gradient(to right, #ff4444, #ff6f61);
-  color: white;
-  position: relative;
-}
-
-.pickup-btn {
-  background: #ffb347;
-  color: white;
-}
-
-.theme-toggle-btn {
-  background: #4a4a4a;
-  color: white;
-}
-
-.no-btn.bouncing {
-  animation: bounce 0.5s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.message, .emoji-fireworks {
-  font-size: 18px;
-  margin-top: 20px;
-  min-height: 40px;
-}
-
-.emoji-fireworks {
-  font-size: 28px;
-}
-
-.share-btn {
-  background: #25D366;
-  color: white;
-  border-radius: 30px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  display: none;
+p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  line-height: 1.6;
 }
 
 .create-own-link {
   display: inline-block;
   margin-top: 30px;
-  padding: 12px 20px;
+  padding: 14px 24px;
   border-radius: 30px;
   background-color: #6a00f4;
   color: #fff;
@@ -111,97 +52,57 @@ button {
   transform: scale(1.05);
 }
 
-.hidden { display: none; }
-.dark-theme {
-  background: #1f1f1f;
-  color: #eee;
+footer {
+  margin-top: 50px;
+  font-size: 14px;
+  color: #666;
 }
-.dark-theme h1 { color: #ff89a4; }
+
+body.dark footer {
+  color: #aaa;
+}
+
+a {
+  color: #ff4d6d;
+  text-decoration: none;
+}
+
+.theme-toggle {
+  margin-top: 25px;
+}
+
+.theme-toggle button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.theme-toggle button:hover {
+  background: #222;
+}
 
   </style>
 </head>
-<body>  <h1>Will You Be My Girlfriend? 💖</h1>  <div class="buttons">
-    <button class="yes-btn">Yes</button>
-    <button class="no-btn">No</button>
-    <button class="pickup-btn">🎯 Pickup Line</button>
-  </div>  <div class="theme-toggle">
-    <button class="theme-toggle-btn" id="toggleTheme">🌗 Toggle Theme</button>
-  </div>  <div class="message" id="message"></div>
-  <div class="emoji-fireworks" id="fireworks"></div>
-  <button class="share-btn" id="shareBtn">💌 Share on WhatsApp</button>
-  <a href="admin.html" class="create-own-link">💌 Create Your Own Crush Link</a>  <audio id="romanticMusic" preload="auto">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3">
-  </audio>  <script>
-    const yesBtn = document.querySelector('.yes-btn');
-    const noBtn = document.querySelector('.no-btn');
-    const pickupBtn = document.querySelector('.pickup-btn');
-    const toggleTheme = document.getElementById('toggleTheme');
-    const message = document.getElementById('message');
-    const fireworks = document.getElementById('fireworks');
-    const music = document.getElementById('romanticMusic');
-    const shareBtn = document.getElementById('shareBtn');
-    const body = document.body;
+<body>  <h1>Welcome to SendUrCrush 💘</h1>  <p>SendUrCrush is a fun and playful way to confess your feelings or ask someone out using a personalized love link. 
+  Whether you're shy, romantic, or just want to have fun, this app lets you create a custom link with your crush's name, a sweet question, and cute buttons that lead to a heartwarming surprise.</p>  <p>When your crush clicks "No", they’ll be playfully persuaded with pickup lines until they say "Yes". Once they do, confetti bursts, music plays, and your WhatsApp opens so they can reply immediately! ❤️</p>  <p>Best of all — it's 100% free and shareable. You don’t need an account. Just create your link, send it, and spread love 💌</p><a href="admin.html" class="create-own-link">💌 Create Your Own Crush Link</a>
 
-    const pickupLines = [
-      "Are you French? Because Eiffel for you. 😘",
-      "Do you have a map? I just got lost in your eyes. 🗺️",
-      "I must be a snowflake, because I've fallen for you. ❄️",
-      "Do you believe in love at first click? 💻💘",
-      "You must be WiFi — I'm feeling the connection. 📶❤️",
-      "Are you a magician? Because whenever I look at you, everyone else disappears. ✨",
-      "Even if gravity didn’t exist, I’d still fall for you. 🌌",
-      "If beauty were time, you'd be an eternity. ⏳"
-    ];
-
-    let clickCount = 0;
-
-    function typeMessage(text, element, delay = 30) {
-      element.textContent = "";
-      let i = 0;
-      const typing = setInterval(() => {
-        element.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) clearInterval(typing);
-      }, delay);
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+  </div>  <footer>
+    Made with ❤️ by <a href="https://sendurcrush.netlify.app" target="_blank">SendUrCrush</a>
+  </footer>  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     }
 
-    noBtn.addEventListener('click', () => {
-      if (clickCount < pickupLines.length) {
-        typeMessage(pickupLines[clickCount], message);
-        clickCount++;
-        if (clickCount >= 3) noBtn.classList.add('bouncing');
-        if (clickCount === pickupLines.length) {
-          setTimeout(() => {
-            noBtn.classList.add('hidden');
-            typeMessage("Looks like the only right answer is YES 😏", message);
-          }, 1000);
-        }
-      }
-    });
-
-    yesBtn.addEventListener('click', () => {
-      typeMessage("Yaaay!! You just made me the happiest person alive! 💘", message);
-      fireworks.textContent = "🎉💖✨💞🎊";
-      confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
-      music.play();
-      shareBtn.style.display = 'inline-block';
-    });
-
-    pickupBtn.addEventListener('click', () => {
-      const random = pickupLines[Math.floor(Math.random() * pickupLines.length)];
-      typeMessage(random, message);
-    });
-
-    toggleTheme.addEventListener('click', () => {
-      body.classList.toggle('dark-theme');
-    });
-
-    shareBtn.addEventListener('click', () => {
-      const shareMessage = encodeURIComponent(
-        `She said YES! 💖 Try this fun Crush Picker ➡️ https://sendurcrush.netlify.app\n\nWant your own version for FREE? DM the Dev 💬 https://wa.me/2348103552497`
-      );
-      const url = `https://wa.me/?text=${shareMessage}`;
-      window.open(url, '_blank');
-    });
+    // On page load, check for saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
   </script></body>
 </html>
